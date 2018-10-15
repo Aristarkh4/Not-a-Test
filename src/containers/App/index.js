@@ -2,7 +2,7 @@ import { isNonEmptyString } from 'ramda-adjunct'
 import { connect } from 'react-redux'
 
 import App from '../../components/App'
-import { userRegistered } from '../../state/actions'
+import { userRegistered, usersSorted, usersUnsorted } from '../../state/actions'
 import { getUsers, getLatestUser } from '../../state/selectors'
 
 function mapStateToProps(state, props) {
@@ -21,6 +21,11 @@ function mapDispatchToProps(dispatch, props) {
         dispatch(userRegistered(userInput.value))
         userInput.value = ''
       }
+    },
+    // Need to handle the click of the users sorting button.
+    handleOnSort: e => {
+      e.preventDefault()
+      // NEED TO DISPATCH
     }
   }
 }

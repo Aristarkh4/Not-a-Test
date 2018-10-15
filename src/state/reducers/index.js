@@ -1,6 +1,11 @@
 import { isNonEmptyString } from 'ramda-adjunct'
 
-import { initialState, USER_REGISTERED } from '../constants'
+import {
+  initialState,
+  USER_REGISTERED,
+  USERS_SORTED,
+  USERS_UNSORTED
+} from '../constants'
 
 export default function rootReducer(
   state = initialState,
@@ -14,6 +19,17 @@ export default function rootReducer(
             users: [...state.users, payload.user]
           }
         : state
+    // When list is being sorted/unsorted the alphabetical flag swithces,
+    case USERS_SORTED:
+      return {
+        ...state,
+        isAlphabetical: true
+      }
+    case USERS_SORTED:
+      return {
+        ...state,
+        isAlphabetical: false
+      }
     default:
       return state
   }
